@@ -37,9 +37,10 @@ namespace Tangerine
             {
                 bitmap.RotateFlip(RotateFlipType.RotateNoneFlipY);
                 BitmapData imageData = bitmap.LockBits(new Rectangle(0, 0, bitmap.Width, bitmap.Height), ImageLockMode.ReadOnly, imageFormat);
+                var texture = new Texture(pixelFormat, bitmap.Width, bitmap.Height, imageData.Scan0);
                 bitmap.UnlockBits(imageData);
 
-                return new Texture(pixelFormat, bitmap.Width, bitmap.Height, imageData.Scan0);
+                return texture;
             }
         }
     }
