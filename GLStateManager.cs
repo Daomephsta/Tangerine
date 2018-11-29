@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using OpenTK.Graphics.OpenGL;
+using Tangerine.GLObjects;
 
 namespace Tangerine
 {
@@ -30,7 +31,7 @@ namespace Tangerine
 
         public static ShaderProgram BoundShaderProgram
         {
-            get => boundShaderPrograms.Peek();
+            get => boundShaderPrograms.Count > 0 ? boundShaderPrograms.Peek() : null;
         }
         private static readonly Stack<ShaderProgram> boundShaderPrograms = new Stack<ShaderProgram>();
 

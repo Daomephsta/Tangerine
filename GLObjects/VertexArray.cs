@@ -1,10 +1,10 @@
-﻿using Tangerine.OpenTKExtensions;
+﻿using Tangerine.Extensions.OpenTK;
 using OpenTK.Graphics.OpenGL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Tangerine
+namespace Tangerine.GLObjects
 {
     public class VertexArray
     {
@@ -47,6 +47,9 @@ namespace Tangerine
     {
         public static readonly VertexFormat POSITION = new VertexFormat.Builder()
             .AddAttribute(VertexAttribPointerType.Float, 3).Build();
+        public static readonly VertexFormat POSITION_NORMAL = new VertexFormat.Builder()
+            .AddAttribute(VertexAttribPointerType.Float, 3)
+            .AddAttribute(VertexAttribPointerType.Float, 3).Build();
         public static readonly VertexFormat POSITION_UV = new VertexFormat.Builder()
             .AddAttribute(VertexAttribPointerType.Float, 3)
             .AddAttribute(VertexAttribPointerType.Float, 2).Build();
@@ -57,6 +60,7 @@ namespace Tangerine
         private VertexFormat(IEnumerable<VertexAttrib> attributes)
         {
             vertexAttributes = new VertexAttrib[attributes.Count()];
+
             for (int attributeIndex = 0; attributeIndex < attributes.Count(); attributeIndex++)
             {
                 VertexAttrib attribute = attributes.ElementAt(attributeIndex);
