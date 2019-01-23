@@ -14,13 +14,12 @@ namespace Tangerine.GLObjects
 
         public void Bind()
         {
-            GLStateManager.BindElementBuffer(this);
+            GL.BindBuffer(BufferTarget.ElementArrayBuffer, this.glID);
         }
 
         public void Unbind()
         {
-            if (GLStateManager.BoundElementBuffer == this) GLStateManager.UnbindElementBuffer();
-            else throw new InvalidOperationException("Attempted to unbind buffer that is already unbound");
+            GL.BindBuffer(BufferTarget.ElementArrayBuffer, 0);
         }
 
         public void SetData(int[] indices, BufferUsageHint usageHint)

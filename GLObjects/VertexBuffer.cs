@@ -14,13 +14,12 @@ namespace Tangerine.GLObjects
 
         public void Bind()
         {
-            GLStateManager.BindVertexBuffer(this);
+            GL.BindBuffer(BufferTarget.ArrayBuffer, this.glID);
         }
 
         public void Unbind()
         {
-            if (GLStateManager.BoundVertexBuffer == this) GLStateManager.UnbindVertexBuffer();
-            else throw new InvalidOperationException("Attempted to unbind buffer that is already unbound");
+            GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
         }
 
         public void SetData(float[] vertices, BufferUsageHint usageHint)

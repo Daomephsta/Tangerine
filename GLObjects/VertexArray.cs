@@ -17,13 +17,12 @@ namespace Tangerine.GLObjects
 
         public void Bind()
         {
-            GLStateManager.BindVertexArray(this);
+            GL.BindVertexArray(this.glID);
         }
 
         public void Unbind()
         {
-            if (GLStateManager.BoundVertexArray == this) GLStateManager.UnbindVertexArray();
-            else throw new InvalidOperationException("Attempted to unbind vertex array that is already unbound");
+            GL.BindVertexArray(0);
         }
 
         public void Delete()
